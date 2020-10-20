@@ -7,8 +7,13 @@ Rails.application.routes.draw do
   put "boards/update",to: "boardss#update"
   delete "boards/:id" , to: "boards#destroy"
 
-  resources :boards #rails で定義されている七つのアクションのルーティングを自動で書いてくれる
+  #rails で定義されている七つのアクションのルーティングを自動で書いてくれる
   #REST : ユーザーが自分の好き勝手に機能を追加していくのではなく、あらかじめ決められたリソースを定義し、それに沿ってアクションとhttpメソッドを関連づけるという考え方です。
   #これを定義することによってヘルパーが使えるようになる
+  resources :boards do
+    resources :comments, only: [:create, :destroy]
+  end
+
+  root to: "boards#index"
 
 end
