@@ -4,7 +4,7 @@ class CreateCards < ActiveRecord::Migration[6.0]
       t.text :title
       t.text :author
       t.integer :price
-      t.texrt :publisher
+      t.text :publisher
       t.text :memo
 
       t.timestamps
