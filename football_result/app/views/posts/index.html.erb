@@ -1,0 +1,19 @@
+<h1 class="display-4 text-primary">Posts#index</h1>
+<p>match_result</p>
+<table class="table">
+    <tr>
+        <th>Match_Id</th>
+        <th>Home-team</th>
+        <th>Match_result</th>
+        <th>Away-team</th>
+    </tr>
+    <% @data.each do |obj| %>
+    <tr>
+        <td><a href = "/posts/<%= obj.id%>"><%= obj.id %></a></td>
+        <td><%= obj.hometeam %></td>
+        <td><%= obj.hr %>-<%= obj.ar %></td>
+        <td><%= obj.awayteam %></td>
+
+    </tr>
+    <% end %>
+</table>

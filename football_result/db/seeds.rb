@@ -7,4 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Post.create(hometeam:"PSG", awayteam:"ManUted",result_home:1,result_away:2)
+Post.create(hometeam:"PSG", awayteam:"ManUted",hr:1,ar:2, MyMOM:"Rashford", memo:"win manuted")
+Post.create(hometeam:"Totenham", awayteam:"Arsenal",hr:2,ar:2, MyMOM:"Son", memo:"win spurs")

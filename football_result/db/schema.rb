@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_21_004906) do
+ActiveRecord::Schema.define(version: 2020_10_21_093305) do
 
   create_table "posts", force: :cascade do |t|
     t.text "hometeam"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2020_10_21_004906) do
     t.integer "ar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "MyMOM"
+    t.text "memo"
   end
 
 end

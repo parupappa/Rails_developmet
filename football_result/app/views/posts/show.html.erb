@@ -1,0 +1,31 @@
+<h1 class="display-4 text-primary">Posts#show</h1>
+<h3>試合詳細</h3>
+<table class="table">
+    <tr>
+        <th>match_Id</th><!-- th: table header-->
+        <th>hometeam</th>
+        <th>match_result</th>
+        <th>awayteam</th>
+    </tr>
+    <tr><!-- 表の横一行-->
+        <td><%= @data.id %></td>
+        <td><%= @data.hometeam %></td>
+        <td><%= @data.hr %>-<%= @data.ar %></td>
+        <td><%= @data.awayteam %></td>
+
+    </tr>
+</table>
+
+
+<div class="kannsou-form">
+    <h3 class="section-title">感想メモ</h3>
+    <p>MyMOM　&#x1f451;</p>
+
+    <p class = "mom-form"><%= @data.MyMOM %> </p>
+    </div>
+    <p>メモ</p>
+    <p class  = "memo-form"><%= @data.memo%></p>
+
+</div>
+
+<a href="/posts" class="btn btn-primary btn-lg">return top</a>

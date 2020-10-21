@@ -1,0 +1,39 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.kannsou-form{
+    padding-top: 100px;
+}
+
+.section-title {
+  border-bottom: 2px solid #dee7ec;
+  font-size: 28px;
+  padding-bottom: 15px;
+  margin-bottom: 50px;
+}
+
+
+.mom-form{
+    width:400px ;
+    padding: 20px;
+    margin-bottom: 30px;
+    border:1px solid #dee7ec;
+    font-size:24px;
+}
+
+.memo-form{
+    width:800px ;
+    padding: 40px;
+    margin-bottom: 30px;
+    border:1px solid #dee7ec;
+    font-size:20px;
+}
+
+
+
+.col-xs-2 input{
+    width:50%;
+
+}
