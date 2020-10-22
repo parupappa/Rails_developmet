@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   def index
-    @msg = "demo"
     @data = Post.all
 
   end
@@ -14,10 +13,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    if request.post? then
-      @data = Post.create(params_post)
-    end
-    goindex
+   @data = Post.new(params_post)
+   @data.save
+   goindex
   end
 
   def edit
@@ -25,15 +23,15 @@ class PostsController < ApplicationController
 
 
 
-   private
+  private
 
-   def params_post
-     params.permit(:hometeam, :awayteam, :hr, :ar)
-   end
+  def params_post
+    params.permit(:hometeam, :awayteam, :hr, :ar,:MyMOM, :memo)
+  end
 
-   def goindex
+  def goindex
     redirect_to "/posts"
-   end
+  end
 
 
 end

@@ -1,37 +1,59 @@
-<h1 class="display-4 text-primary">Posts#new</h1>
-<%=form_tag(controller:'posts', action:'new') do %>
+<!--<h1 class="display-4 text-primary">Posts#new</h1>
+<%=form_tag("/posts", {method: :post}) do %>
     <div class="row">
-        <div class="form-group">
-            <div class="col-xs-4">
-                <label for="hometeam">Hometeam</label>
-                <input class="form-control"  type="text">
+        <div class="home-form">
+            <div class="form-group">
+                <div class="col-md-16">
+                    <label for="hometeam">Hometeam</label>
+                    <%= text_field_tag(:hometeam,"", {class:"form-control"}) %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-8">
+                    <label for="hr">H.得点</label>
+                    <%= number_field(:hr,"", {class:"form-control"}) %>
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-xs-2">
-                <label for="hr">ホームチームの得点</label>
-                <input class="form-control" id="ex2" type="number">
+        <div class = "away-form">
+            <div class="form-group">
+                <div class="col-md-8">
+                    <label for="ar">A.得点</label>
+                    <%= number_field(:ar,"", {class:"form-control"}) %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-16">
+                    <label for="awayteam">Awayteam</label>
+                    <%= text_field_tag(:awayteam,"", {class:"form-control"}) %>
+                </div>
             </div>
         </div>
 
-        <div class = "form-group">
-            <p> - </p>
-        </div>
 
-        <div class="form-group">
-            <div class="col-xs-2">
-                <label for="ar">アウェイチームの得点</label>
-                <input class="form-control"  type="number">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-xs-4">
-                <label for="awayteam">Awayteam</label>
-                <input class="form-control" type="text">
-            </div>
-        </div>
-        <input type="submit" value = "投稿">
     </div>
+
+    <div class="kannsou-form">
+        <h3 class="section-title">感想メモ</h3>
+        <label for="MyMOM">MyMOM &#x1f451;</label>
+        <%= text_field_tag(:MyMOM,"", {class:"form-control"}) %>
+        <label for="memo">試合メモ</label>
+        <%= text_area(:memo,"",{class:"form-control"}) %>
+
+    </div>
+    <%= submit_tag %>
+
+
+
+<% end %>-->
+
+
+<%= form_tag "/posts", method: :post do %>
+    タイトル: <%= text_field_tag :hometeam %> <br>
+    作成者名: <%= text_field_tag :awayteam %> <br>
+     タイトル: <%= text_field_tag :hr %> <br>
+     作成者名: <%= text_field_tag :ar %> <br>
+<%= submit_tag %>
 <% end %>
