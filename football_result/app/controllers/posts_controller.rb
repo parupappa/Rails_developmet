@@ -15,8 +15,10 @@ class PostsController < ApplicationController
   def create
     @data = Post.new(params_post)
     hm , am = output_emblem()
+    puts @data
     @data.home_emblem = hm
     @data.away_emblem = am
+    puts @data
     @data.save
     goindex
   end
@@ -52,13 +54,15 @@ class PostsController < ApplicationController
   end
 
   def output_emblem()
-    png_path ="/Users/yokooannosuke/Cording/Rails_developmet/football_result/app/assets/images/*.png"
+    until_images_path = Rails.root + "/app/assets/images/"
+    png_path = until_images_path +  "*.png"
     array = []
     Dir.glob(png_path).each do |em|
-      array.push(em)
+      images_path = File.basenema(em)
+      array.push(images_path)
     end
-    hometeam_emblem = Rails.root+"/app/assets/images/" + @data.hometeam + ".png"
-    awayteam_emblem = Rails.root+"/app/assets/images/" + @data.awayteam + ".png"
+    hometeam_emblem = @data.hometeam + ".png"
+    awayteam_emblem = @data.awayteam + ".png"
     emblem = [nil, nil]
     i,j = 0, 0
 

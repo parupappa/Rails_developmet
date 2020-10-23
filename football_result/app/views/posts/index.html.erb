@@ -2,21 +2,21 @@
 <h3>試合結果一覧</h3>
 <a href="/posts/new" class="btn btn-primary btn-lg">新規投稿</a>
 
-<table class="table" width = 150% >
-    <tr height = 150% >
+<table class="table"  >
+    <tr  >
         <th>Match_Id</th>
         <th>Home-team</th>
         <th>Match_result</th>
         <th>Away-team</th>
     </tr>
     <% @data.each do |obj| %>
-    <tr height=150% width = 150%>
+    <tr>
         <td><a href = "/posts/<%= obj.id%>"><%= obj.id %></a></td>
-        <td><%= obj.hometeam %><%= image_tag  "トッテナム.png", :size => "30x30" %>
+        <td><%= obj.hometeam %>   <%= image_tag  "#{@data.home_emblem}", :size => "30x30" %>
         </td>
         <td ><%= obj.hr %> - <%= obj.ar %>
         </td>
-        <td><%= obj.awayteam %>   <%= image_tag "アーセナル.png" , :size =>'30x30' %>
+        <td><%= obj.awayteam %>   <%= image_tag "#{@data.away_emblem}" , :size =>'30x30' %>
         </td>
 
     </tr>
