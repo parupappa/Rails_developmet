@@ -1,7 +1,10 @@
 <h1 class="display-4 text-primary">Posts#show</h1>
 <h3>試合詳細</h3>
+<%= link_to "Edit", "/posts/#{@data.id}/edit" %>
+<%= link_to "Delete", "/posts/#{@data.id}", method: :delete, data: { confirm: "本当に削除しますか？" } %>
+
 <table class="table">
-    <tr>
+    <tr >
         <th>match_Id</th><!-- th: table header-->
         <th>hometeam</th>
         <th>match_result</th>
@@ -28,4 +31,5 @@
 
 </div>
 
-<a href="/posts" class="btn btn-primary btn-lg">return top</a>
+<!--<a href="/posts" class="btn btn-primary btn-lg">return top</a>-->
+<%= link_to "試合結果一覧に戻る", "/posts" %>

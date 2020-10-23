@@ -1,5 +1,7 @@
-<!--<h1 class="display-4 text-primary">Posts#new</h1>
-<%=form_tag("/posts", {method: :post}) do %>
+
+<h1 class="display-4 text-primary">Posts#new</h1>
+
+<%=form_tag "/posts", method: :post do %>
     <div class="row">
         <div class="home-form">
             <div class="form-group">
@@ -10,18 +12,17 @@
             </div>
 
             <div class="form-group">
-                <div class="col-md-8">
+                <div class="col-md-16">
                     <label for="hr">H.得点</label>
-                    <%= number_field(:hr,"", {class:"form-control"}) %>
+                    <%= number_field_tag(:hr,"",  in: 0..10, step: 1 , class:"form-control")  %>
                 </div>
             </div>
         </div>
-
         <div class = "away-form">
             <div class="form-group">
-                <div class="col-md-8">
+                <div class="col-md-16">
                     <label for="ar">A.得点</label>
-                    <%= number_field(:ar,"", {class:"form-control"}) %>
+                    <%= number_field_tag(:ar,"",  in: 0..10, step: 1 , class:"form-control") %>
                 </div>
             </div>
             <div class="form-group">
@@ -31,8 +32,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 
     <div class="kannsou-form">
@@ -40,20 +39,10 @@
         <label for="MyMOM">MyMOM &#x1f451;</label>
         <%= text_field_tag(:MyMOM,"", {class:"form-control"}) %>
         <label for="memo">試合メモ</label>
-        <%= text_area(:memo,"",{class:"form-control"}) %>
-
+        <%= text_area_tag(:memo,"",{class:"form-control"}) %>
     </div>
-    <%= submit_tag %>
+    <%= submit_tag("投稿",  {class: "btn-primary btn-lg"}) %>
 
-
-
-<% end %>-->
-
-
-<%= form_tag "/posts", method: :post do %>
-    タイトル: <%= text_field_tag :hometeam %> <br>
-    作成者名: <%= text_field_tag :awayteam %> <br>
-     タイトル: <%= text_field_tag :hr %> <br>
-     作成者名: <%= text_field_tag :ar %> <br>
-<%= submit_tag %>
 <% end %>
+
+<%= link_to "試合結果一覧に戻る", "/posts" %>
