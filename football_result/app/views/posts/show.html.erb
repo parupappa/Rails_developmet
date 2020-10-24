@@ -1,7 +1,9 @@
 <h1 class="display-4 text-primary">Posts#show</h1>
 <h3>試合詳細</h3>
-<%= link_to "Edit", "/posts/#{@data.id}/edit" %>
-<%= link_to "Delete", "/posts/#{@data.id}", method: :delete, data: { confirm: "本当に削除しますか？" } %>
+<div class = "menu">
+    <%= link_to "Edit", "/posts/#{@data.id}/edit" %>
+    <%= link_to "Delete", "/posts/delete/#{@data.id}", method: :delete, data: { confirm: "本当に削除しますか？" } %>
+</div>
 
 <table class="table">
     <tr >
@@ -11,10 +13,23 @@
         <th>awayteam</th>
     </tr>
     <tr><!-- 表の横一行-->
+        <% hometeam_png = @data.hometeam + ".png" %>
+        <% awayteam_png = @data.awayteam + ".png" %>
+        <% path_array = output_array %>
+        <% home_em , away_em = output_emblem(path_array, hometeam_png ,awayteam_png)%>
+
         <td><%= @data.id %></td>
-        <td><%= @data.hometeam %></td>
+        <td><%= @data.hometeam %>
+            <% if home_em != nil %>
+                <%= image_tag  hometeam_png , :size => "25x25" %>
+            <% end %>
+        </td>
         <td><%= @data.hr %>-<%= @data.ar %></td>
-        <td><%= @data.awayteam %></td>
+        <td><%= @data.awayteam %>
+            <% if away_em != nil %>
+                <%= image_tag awayteam_png , :size =>'25x25' %>
+            <% end %>
+        </td>
 
     </tr>
 </table>
@@ -30,6 +45,5 @@
     <p class  = "memo-form"><%= @data.memo%></p>
 
 </div>
-
 <!--<a href="/posts" class="btn btn-primary btn-lg">return top</a>-->
 <%= link_to "試合結果一覧に戻る", "/posts" %>

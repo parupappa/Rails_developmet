@@ -2,24 +2,44 @@
 <h3>試合結果一覧</h3>
 <a href="/posts/new" class="btn btn-primary btn-lg">新規投稿</a>
 
+
 <table class="table"  >
     <tr  >
         <th>Match_Id</th>
         <th>Home-team</th>
         <th>Match_result</th>
         <th>Away-team</th>
+        <th></th>
     </tr>
     <% @data.each do |obj| %>
     <tr>
-        <td><a href = "/posts/<%= obj.id%>"><%= obj.id %></a></td>
-        <td><%= obj.hometeam %>   <%= image_tag  "#{@data.home_emblem}", :size => "30x30" %>
-        </td>
-        <td ><%= obj.hr %> - <%= obj.ar %>
-        </td>
-        <td><%= obj.awayteam %>   <%= image_tag "#{@data.away_emblem}" , :size =>'30x30' %>
-        </td>
+        <% hometeam_png = obj.hometeam + ".png" %>
+        <% awayteam_png = obj.awayteam + ".png" %>
+        <% path_array = output_array %>
+        <% home_em , away_em = output_emblem(path_array, hometeam_png ,awayteam_png)%>
 
+        <td class= "move-right"><a href="/posts/<%= obj.id%>">　<%= obj.id %></a></td>
+        <td><%= obj.hometeam %>
+            <% if home_em != nil %>
+                <%= image_tag  hometeam_png , :size => "25x25" %>
+            <% end %>
+        </td>
+        <td class="move-right">　　<%= obj.hr %> - <%= obj.ar %></td>
+        <td><%= obj.awayteam %>
+            <% if away_em != nil %>
+                <%= image_tag awayteam_png , :size =>'25x25' %>
+            <% end %>
+        </td>
+        <td><a href="/posts/<%= obj.id %>">Edit</a>&nbsp;&nbsp;<a href="javascript:delData(<%= obj.id %>);">Delete</a></td>
     </tr>
     <% end %>
 </table>
 
+<script>
+     function delData(num) {
+         if (confirm('このデータを削除しますか？')) {
+             document.location = "/posts/delete/" + num;
+         }
+         return false;
+     }
+</script>

@@ -14,11 +14,6 @@ class PostsController < ApplicationController
 
   def create
     @data = Post.new(params_post)
-    hm , am = output_emblem()
-    puts @data
-    @data.home_emblem = hm
-    @data.away_emblem = am
-    puts @data
     @data.save
     goindex
   end
@@ -33,12 +28,52 @@ class PostsController < ApplicationController
     goindex
    end
 
-  def destroy
+  def delete
     @data = Post.find(params[:id])
     @data.destroy
     goindex
   end
 
+
+  def output_array
+    until_images_path = Rails.root + "/app/assets/images/"
+    png_path ="/Users/yokooannosuke/Cording/Rails_developmet/football_result/app/assets/images/*.png"
+    array = []
+    Dir.glob(png_path).each do |em|
+      images_path = File.basename(em)
+      array.push(images_path)
+    end
+    return array
+  end
+
+  def output_emblem(a, foo , bar )
+    emblem = [nil, nil]
+    i,j = 0, 0
+
+    while i < a.length do
+      if foo == a[i]
+        emblem[0] = foo
+        break
+      else
+        emblem[0] = nil
+      end
+      i += 1
+    end
+
+    while j < a.length do
+      if bar == a[j]
+        emblem[1] = bar
+        break
+      else
+        emblem[1] = nil
+      end
+      j += 1
+    end
+    return emblem[0] ,emblem[1]
+  end
+
+  helper_method :output_array
+  helper_method :output_emblem
 
 
 
@@ -53,42 +88,7 @@ class PostsController < ApplicationController
     redirect_to "/posts"
   end
 
-  def output_emblem()
-    until_images_path = Rails.root + "/app/assets/images/"
-    png_path = until_images_path +  "*.png"
-    array = []
-    Dir.glob(png_path).each do |em|
-      images_path = File.basenema(em)
-      array.push(images_path)
-    end
-    hometeam_emblem = @data.hometeam + ".png"
-    awayteam_emblem = @data.awayteam + ".png"
-    emblem = [nil, nil]
-    i,j = 0, 0
 
-    while i < array.length do
-      if hometeam_emblem == array[i]
-        emblem[0] = hometeam_emblem
-        break
-      else
-        emblem[0] = nil
-      end
-      i += 1
-    end
-
-    while j < array.length do
-      if awayteam_emblem == array[j]
-        emblem[1] = awayteam_emblem
-        break
-      else
-        emblem[1] = nil
-      end
-      j += 1
-    end
-
-    return emblem[0] ,emblem[1]
-
-  end
 
 
 end
