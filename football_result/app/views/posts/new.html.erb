@@ -3,6 +3,14 @@
 
 <%=form_tag "/posts", method: :post do %>
     <div class="row">
+        <div class="date">
+            <div class = "form-group">
+                <div class="col-md-16">
+                    <label for="date">Macth_Day</label><br>
+                    <%= date_field_tag(:date,"", {class:"form-control"}) %>
+                </div>
+            </div>
+        </div>
         <div class="home-form">
             <div class="form-group">
                 <div class="col-md-16">

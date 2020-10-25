@@ -6,6 +6,7 @@
 <table class="table"  >
     <tr  >
         <th>Match_Id</th>
+        <th>Macth_Day</th>
         <th>Home-team</th>
         <th>Match_result</th>
         <th>Away-team</th>
@@ -19,27 +20,21 @@
         <% home_em , away_em = output_emblem(path_array, hometeam_png ,awayteam_png)%>
 
         <td class= "move-right"><a href="/posts/<%= obj.id%>">　<%= obj.id %></a></td>
+        <td><%= obj.date %></td>
         <td><%= obj.hometeam %>
             <% if home_em != nil %>
                 <%= image_tag  hometeam_png , :size => "25x25" %>
             <% end %>
         </td>
-        <td class="move-right">　　<%= obj.hr %> - <%= obj.ar %></td>
+        <td class="move-right">　　<%= obj.hr %> <span>-</span> <%= obj.ar %></td>
         <td><%= obj.awayteam %>
             <% if away_em != nil %>
                 <%= image_tag awayteam_png , :size =>'25x25' %>
             <% end %>
         </td>
-        <td><a href="/posts/<%= obj.id %>">Edit</a>&nbsp;&nbsp;<a href="javascript:delData(<%= obj.id %>);">Delete</a></td>
+        <td><%= link_to "Edit", "/posts/#{obj.id}/edit" %>　<%= link_to "Delete", "/posts/#{obj.id}", method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
     </tr>
     <% end %>
 </table>
 
-<script>
-     function delData(num) {
-         if (confirm('このデータを削除しますか？')) {
-             document.location = "/posts/delete/" + num;
-         }
-         return false;
-     }
-</script>
+

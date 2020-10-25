@@ -3,6 +3,14 @@
 
 <%=form_tag "/posts/#{@data.id}", method: :put do %>
 <div class="row">
+    <div class="date">
+        <div class="form-group">
+            <div class="col-md-16">
+                <label for="date">Macth_Day</label><br>
+                <%= date_field_tag(:date,"#{@data.date}", {class:"form-control"}) %>
+            </div>
+        </div>
+    </div>
     <div class="home-form">
         <div class="form-group">
             <div class="col-md-16">
@@ -40,10 +48,11 @@
     <%= text_field_tag(:MyMOM,"#{@data.MyMOM}", {class:"form-control"}) %>
     <label for="memo">試合メモ</label>
     <%= text_area_tag(:memo,"#{@data.memo}",{class:"form-control"}) %>
+    <%= submit_tag("保存",  {class: "btn-primary btn-lg"}) %>
 </div>
-<%= submit_tag("保存",  {class: "btn-primary btn-lg"}) %>
+
+<%= link_to "試合結果一覧に戻る", "/posts" %>
 
 <% end %>
 
-<%= link_to "試合結果一覧に戻る", "/posts" %>
 

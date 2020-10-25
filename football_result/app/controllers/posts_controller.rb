@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     goindex
    end
 
-  def delete
+  def destroy
     @data = Post.find(params[:id])
     @data.destroy
     goindex
@@ -81,7 +81,7 @@ class PostsController < ApplicationController
   private
 
   def params_post
-    params.permit(:hometeam, :awayteam, :hr, :ar,:MyMOM, :memo, :home_emblem, :away_emblem)
+    params.permit(:hometeam, :awayteam, :hr, :ar,:MyMOM, :memo, :date)
   end
 
   def goindex
