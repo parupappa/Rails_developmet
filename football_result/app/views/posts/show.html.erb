@@ -15,24 +15,23 @@
         <th>Awayteam</th>
     </tr>
     <tr><!-- 表の横一行-->
-        <% hometeam_png = @data.hometeam + ".png" %>
-        <% awayteam_png = @data.awayteam + ".png" %>
-        <% path_array = output_array %>
-        <% home_em , away_em = output_emblem(path_array, hometeam_png ,awayteam_png)%>
+       <% require "./app/controllers/createpath_to_Railsapp.rb" #createpath_to_Railsapp を読み込み%>
+       <% team_array = create_all_image_name %>
+       <% home_png , away_png = search_team(team_array, @data.hometeam,  @data.awayteam)%>
 
-        <td><%= @data.id %></td>
-        <td><%= @data.date %></td>
-        <td><%= @data.hometeam %>
-            <% if home_em != nil %>
-                <%= image_tag  hometeam_png , :size => "25x25" %>
-            <% end %>
-        </td>
-        <td>　　<%= @data.hr %>&nbsp;&nbsp;<span>-</span>&nbsp;&nbsp;<%= @data.ar %></td>
-        <td><%= @data.awayteam %>
-            <% if away_em != nil %>
-                <%= image_tag awayteam_png , :size =>'25x25' %>
-            <% end %>
-        </td>
+       <td class="move-right"><a href="/posts/<%= @data.id%>">　<%= @data.id %></a></td>
+       <td><%= @data.date %></td>
+       <td><%= @data.hometeam %>
+           <% if home_png != nil %>
+           <%= image_tag  home_png , :size => "25x25" %>
+           <% end %>
+       </td>
+       <td class="move-right">　　<%= @data.hr %> <span>-</span> <%= @data.ar %></td>
+       <td><%= @data.awayteam %>
+           <% if away_png != nil %>
+           <%= image_tag away_png , :size =>'25x25' %>
+           <% end %>
+       </td>
 
     </tr>
 </table>

@@ -35,49 +35,6 @@ class PostsController < ApplicationController
   end
 
 
-  def output_array
-    until_images_path = Rails.root + "/app/assets/images/"
-    png_path ="/Users/yokooannosuke/Cording/Rails_developmet/football_result/app/assets/images/*.png"
-    array = []
-    Dir.glob(png_path).each do |em|
-      images_path = File.basename(em)
-      array.push(images_path)
-    end
-    return array
-  end
-
-  def output_emblem(a, foo , bar )
-    emblem = [nil, nil]
-    i,j = 0, 0
-
-    while i < a.length do
-      if foo == a[i]
-        emblem[0] = foo
-        break
-      else
-        emblem[0] = nil
-      end
-      i += 1
-    end
-
-    while j < a.length do
-      if bar == a[j]
-        emblem[1] = bar
-        break
-      else
-        emblem[1] = nil
-      end
-      j += 1
-    end
-    return emblem[0] ,emblem[1]
-  end
-
-  helper_method :output_array
-  helper_method :output_emblem
-
-
-
-
   private
 
   def params_post
