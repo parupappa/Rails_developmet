@@ -6,10 +6,18 @@
     height: 200%;
 }
 
+.top{
+    margin-bottom: 20px;
+}
+
+.title{
+    font-size: 200%;
+}
 
 .btn {
     float: right;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+
 }
 
 .table{
@@ -43,21 +51,22 @@ span{
 
 .menu{
     float: right;
-    margin-right: 30px;
+    margin-top: 20px;
+    margin-right: -10%;
     font-size: 150%;
 }
 
 
 
-.kannsou-form{
+.kannsou-form , .comments-form , .comments-index{
     padding-top: 50px;
     margin-bottom: 30px;
 }
 
-.section-title {
+.kannsou-title , .comments-title {
   border-bottom: 2px solid #dee7ec;
   font-size: 28px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   margin-bottom: 50px;
 }
 
@@ -83,3 +92,18 @@ span{
 }
 
 
+.comments-form , .comments-index{
+    width:1000px;
+    margin-left:400px;
+}
+.comments-view{
+  border-bottom: 2px solid #dee7ec;
+  font-size: 28px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+
+.submit-comment{
+    margin-top: 20px;
+}

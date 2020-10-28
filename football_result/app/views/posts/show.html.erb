@@ -1,20 +1,22 @@
+<div class = "top">
+    <h1 class="display-4 text-primary">Posts#show</h1>
+    <p class="title">試合詳細<a href="/posts" class="btn btn-primary btn-lg>試合結果一覧に戻る</a></p>
+</div>
 
-<h1 class="display-4 text-primary">Posts#show</h1>
-<h3>試合詳細</h3>
 <div class = "menu">
     <%= link_to "Edit", "/posts/#{@data.id}/edit" %>
     <%= link_to "Delete", "/posts/#{@data.id}", method: :get, data: { confirm: "本当に削除しますか？" } %>
 </div>
 
 <table class="table">
-    <tr >
+    <tr> <!-- 表の横一行-->
         <th>Match_Id</th><!-- th: table header-->
         <th>Match_Day
         <th>Hometeam</th>
         <th>Match_result</th>
         <th>Awayteam</th>
     </tr>
-    <tr><!-- 表の横一行-->
+    <tr>
        <% require "./app/controllers/createpath_to_Railsapp.rb" #createpath_to_Railsapp を読み込み%>
        <% team_array = create_all_image_name %>
        <% home_png , away_png = search_team(team_array, @data.hometeam,  @data.awayteam)%>
@@ -38,15 +40,29 @@
 
 
 <div class="kannsou-form">
-    <h3 class="section-title">感想メモ</h3>
+    <h3 class="kannsou-title">感想メモ</h3>
     <p>MyMOM　&#x1f451;</p>
-
     <p class = "mom-form"><%= @data.MyMOM %> </p>
     </div>
     <p>試合メモ</p>
     <p class  = "memo-form"><%= @data.memo%></p>
 
-    <%= link_to "試合結果一覧に戻る", "/posts" %>
-
 </div>
-<!--<a href="/posts" class="btn btn-primary btn-lg">return top</a>-->
+
+
+ <div class="comments-index">
+    <h3 class = "comments-view">コメント一覧</h3>
+    <% @data.comments.each do |comment| %>
+        <%= comment.name %>　:　<%= comment.content %>
+        <%= link_to "削除する", post_comment_path(@data, comment), method: :delete, data: { confirm: "本当に削除しますか?" } %><br>
+    <% end %>
+ </div>
+
+<div class = "comments-form">
+    <h3 class="comments-title">コメント</h3>
+    <%= form_for @comment, url: post_comments_path(@data, @comment) do |f| %>
+        名前: <%= f.text_field :name , {class:"form-control"} %> <br>
+        コメント: <%= f.text_area :content , {class:"form-control"} %>
+        <%= f.submit("コメントする" ,class: 'btn btn-primary btn-lg my-1 mb-5 px-5') %>
+    <% end %>
+</div>
