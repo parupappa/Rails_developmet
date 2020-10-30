@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'posts/index'
+  get 'posts/show'
+  get 'posts/add'
+  get 'posts/edit'
   get 'people', to: "people#index"
   get 'people/add', to: "people#add"
   post "people/add", to:"people#create"
